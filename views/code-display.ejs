@@ -32,6 +32,7 @@
   </head>
 
   <body>
+    <%- include("_buttons.ejs",{ id: locals.id }) %>
     <div class="wrapper">
       <div class="line-numbers">
         <% for (let i=1; i<=LineNumbers; i++){ %>

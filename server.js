@@ -31,7 +31,18 @@ app.post("/save", async (req, res) => {
     res.render("new", { value });
   }
 });
-
+app.get("/:id/duplicate", async (req, res) => {
+  const id = req.params.id;
+  try {
+    const document = await Document.findById(id);
+    res.render("code-display", {
+      code: document.value,
+      LineNumbers: document.value.split("\n").length,
+    });
+  } catch (e) {
+    redirect(`/${id}`);
+  }
+});
 app.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
@@ -39,6 +50,7 @@ app.get("/:id", async (req, res) => {
     res.render("code-display", {
       code: document.value,
       LineNumbers: document.value.split("\n").length,
+      id,
     });
   } catch (e) {
     res.redirect("/");

@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="/style.css" />
   <body>
     <form action="/save" method="post">
-      <%- include("_buttons.ejs") %>
+      <%- include("_buttons.ejs",{canSave:true}) %>
       <div class="wrapper">
         <div class="line-numbers">&gt;</div>
         <textarea name="value" autofocus><%=locals.value%></textarea>
